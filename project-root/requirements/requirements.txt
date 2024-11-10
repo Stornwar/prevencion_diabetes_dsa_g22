@@ -1,9 +1,8 @@
 fastapi
-pydantic
+pydantic==1.10.2
 uvicorn
 numpy
 pandas
 scikit-learn
 loguru
 imbalanced-learn
-pydantic-settings
