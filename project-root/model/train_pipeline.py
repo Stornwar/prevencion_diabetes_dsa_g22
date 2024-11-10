@@ -11,7 +11,7 @@ def run_training() -> None:
     # Carga de datos de entrenamiento
     data = load_dataset(
         file_name=app_config.train_data_file,
-        target_file="cdc_diabetes_health_indicators_target.csv"
+        target_file=app_config.train_target_file
     )
     
     # División de datos en entrenamiento y prueba
