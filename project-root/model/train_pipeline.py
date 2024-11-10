@@ -22,6 +22,9 @@ def run_training() -> None:
         random_state=model_config.random_state,
     )
 
+    print("Distribución de clases en y_train antes de SMOTE:")
+    print(y_train.value_counts())
+
     # Balanceo con SMOTE
     sm = SMOTE(random_state=model_config.random_state)
     X_train_balanced, y_train_balanced = sm.fit_resample(X_train, y_train)
