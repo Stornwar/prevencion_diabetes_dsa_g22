@@ -2,14 +2,17 @@ import numpy as np
 from imblearn.over_sampling import SMOTE
 from sklearn.model_selection import train_test_split
 from model.config.core import app_config, model_config
-from pipeline import diabetes_pipe
-from processing.data_manager import load_dataset, save_pipeline
+from model.pipeline import diabetes_pipe
+from model.processing.data_manager import load_dataset, save_pipeline
 
 def run_training() -> None:
     """Entrena y guarda el modelo."""
 
     # Carga de datos de entrenamiento
-    data = load_dataset(file_name=app_config.train_data_file)
+    data = load_dataset(
+        file_name=app_config.train_data_file,
+        target_file="cdc_diabetes_health_indicators_target.csv"
+    )
     
     # División de datos en entrenamiento y prueba
     X_train, X_test, y_train, y_test = train_test_split(
