@@ -26,7 +26,7 @@ def run_training() -> None:
     print(y_train.value_counts())
 
     # Balanceo con SMOTE
-    sm = SMOTE(random_state=model_config.random_state)
+    sm = SMOTE(random_state=model_config.random_state, k_neighbors=1)
     X_train_balanced, y_train_balanced = sm.fit_resample(X_train, y_train)
 
     # Entrena el modelo
