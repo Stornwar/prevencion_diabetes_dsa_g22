@@ -1,17 +1,17 @@
 from pydantic_settings import BaseSettings
-from typing import List
 
 class AppConfig(BaseSettings):
-    data_folder: str = "data"
+    data_folder: str = "data"  # Ruta relativa a la carpeta `data` en la raíz del proyecto
     train_data_file: str = "cdc_diabetes_health_indicators_features.csv"
     pipeline_save_file: str = "artifacts/diabetes_prediction_pipeline"
 
+# Configuración para el modelo
 class ModelConfig(BaseSettings):
-    features: List[str] = [
+    features: list[str] = [
         "HighBP", "HighChol", "CholCheck", "BMI", "Smoker", "Stroke",
         "HeartDiseaseorAttack", "PhysActivity", "Fruits", "Veggies",
         "HvyAlcoholConsump", "AnyHealthcare", "NoDocbcCost", "GenHlth",
-        "MentHlth", "PhysHlth", "DiffWalk", "Sex", "Education"  # Excluye 'Age' y 'Income'
+        "MentHlth", "PhysHlth", "DiffWalk", "Sex", "Education"
     ]
     target: str = "Diabetes_binary"
     n_estimators: int = 100
