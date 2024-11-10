@@ -2,7 +2,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import FunctionTransformer, StandardScaler
 from sklearn.compose import ColumnTransformer
-from config.core import config
+from config.core import model_config
 
 # Funciones de agrupación para Edad e Ingreso
 def agrupa_edades(val):
@@ -24,7 +24,7 @@ preprocessor = ColumnTransformer(
     transformers=[
         ('age_group', FunctionTransformer(lambda x: x.applymap(agrupa_edades)), ['Age']),
         ('income_group', FunctionTransformer(lambda x: x.applymap(agrupa_ingreso)), ['Income']),
-        ('scaler', StandardScaler(), config.model_config.features),  # Estandarizar otras características
+        ('scaler', StandardScaler(), model_config.features),  # Estandarizar otras características
     ],
     remainder='passthrough'  # Deja las demás columnas sin cambios
 )
@@ -33,8 +33,8 @@ preprocessor = ColumnTransformer(
 diabetes_pipe = Pipeline([
     ('preprocessor', preprocessor),
     ('classifier', RandomForestClassifier(
-        n_estimators=config.model_config.n_estimators,
-        max_depth=config.model_config.max_depth,
-        random_state=config.model_config.random_state
+        n_estimators=model_config.n_estimators,
+        max_depth=model_config.max_depth,
+        random_state=model_config.random_state
     ))
 ])
