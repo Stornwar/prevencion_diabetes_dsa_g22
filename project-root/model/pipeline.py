@@ -2,7 +2,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import FunctionTransformer, StandardScaler
 from sklearn.compose import ColumnTransformer
 from xgboost import XGBClassifier
-from config.core import model_config
+from model.config.core import model_config
 
 # Definición de las funciones explícitas para la agrupación de edades e ingresos
 def aplicar_agrupa_edades(df):
