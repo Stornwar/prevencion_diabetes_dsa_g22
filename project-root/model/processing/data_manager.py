@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 import joblib
 from model.config.core import app_config, model_config
@@ -17,6 +18,11 @@ def load_dataset(*, file_name: str) -> pd.DataFrame:
 
 def save_pipeline(*, pipeline_to_persist) -> None:
     """Guarda el pipeline entrenado."""
+    # Asegura que el directorio exista
+    save_dir = os.path.dirname(f"{app_config.data_folder}/{app_config.pipeline_save_file}.pkl")
+    os.makedirs(save_dir, exist_ok=True)
+    
+    # Guarda el pipeline
     save_path = f"{app_config.data_folder}/{app_config.pipeline_save_file}.pkl"
     joblib.dump(pipeline_to_persist, save_path)
 
