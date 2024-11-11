@@ -1,8 +1,8 @@
 import os
 import pandas as pd
 import joblib
-from model.config.core import app_config, model_config
-from model.pipeline import agrupa_edades, agrupa_ingreso
+from config.core import app_config, model_config
+from pipeline import agrupa_edades, agrupa_ingreso
 
 def load_dataset(*, file_name: str) -> pd.DataFrame:
     """Carga un conjunto de datos en formato CSV."""
