@@ -1,5 +1,7 @@
+from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import FunctionTransformer, StandardScaler
 from sklearn.compose import ColumnTransformer
+from xgboost import XGBClassifier
 from config.core import model_config
 
 # Definición de las funciones explícitas para la agrupación de edades e ingresos
@@ -33,3 +35,15 @@ preprocessor = ColumnTransformer(
     ],
     remainder='passthrough'
 )
+
+# Pipeline con preprocesamiento y el modelo XGBClassifier
+diabetes_pipe = Pipeline([
+    ('preprocessor', preprocessor),
+    ('classifier', XGBClassifier(
+        n_estimators=model_config.n_estimators,
+        max_depth=model_config.max_depth,
+        random_state=model_config.random_state,
+        use_label_encoder=False,
+        eval_metric="logloss"
+    ))
+])
