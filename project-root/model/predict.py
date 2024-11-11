@@ -5,6 +5,13 @@ from model.config.core import app_config, model_config
 from model.processing.data_manager import load_pipeline
 from model.processing.validation import validate_inputs
 
+# Lee la versión desde el archivo VERSION
+try:
+    with open("model/VERSION") as version_file:
+        _version = version_file.read().strip()
+except FileNotFoundError:
+    _version = "0.1"  # Coloca un valor predeterminado si no se encuentra el archivo
+    
 # Carga del pipeline entrenado usando la versión actual del modelo
 pipeline_file_name = f"{app_config.pipeline_save_file}{_version}.pkl"
 _diabetes_pipe = load_pipeline(file_name=pipeline_file_name)
