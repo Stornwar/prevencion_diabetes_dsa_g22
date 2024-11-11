@@ -17,7 +17,7 @@ class ModelConfig(BaseSettings):
     target: str = "Diabetes_binary"
     n_estimators: int = 100
     max_depth: int = 10
-    test_size: float = 0.2
+    test_size: float = 0.3
     random_state: int = 42
 
 app_config = AppConfig()
