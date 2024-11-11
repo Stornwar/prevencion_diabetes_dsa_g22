@@ -22,7 +22,7 @@ class ModelConfig(BaseSettings):
     n_estimators: int = 100
     max_depth: int = 10
     
-    test_size: float = 0.2
+    test_size: float = 0.3
 
     # Parámetros para XGBoost
     xgb_n_estimators: int = 100
