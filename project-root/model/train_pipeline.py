@@ -26,10 +26,11 @@ def run_training() -> None:
     print(y_train.value_counts())
 
     # Balanceo con SMOTE
-    # sm = SMOTE(sampling_strategy='minority', random_state=model_config.random_state, k_neighbors=1)
-    sm = SMOTE()
+    sm = SMOTE(k_neighbors=1, random_state=model_config.random_state)
     X_train_balanced, y_train_balanced = sm.fit_resample(X_train, y_train)
-
+    
+    print("Distribución de clases en y_train después de la agrupación:")
+    print(y_train.value_counts())
 
     # Entrena el modelo
     diabetes_pipe.fit(X_train_balanced, y_train_balanced)
