@@ -12,15 +12,13 @@ _diabetes_pipe = load_pipeline(file_name=pipeline_file_name)
 
 def make_prediction(*, input_data: t.Union[pd.DataFrame, dict]) -> dict:
     """Realiza una predicción usando un modelo guardado."""
-
+    
     data = pd.DataFrame(input_data)
     validated_data, errors = validate_inputs(input_data=data)
     results = {"predictions": None, "version": _version, "errors": errors}
 
     if not errors:
-        predictions = _diabetes_pipe.predict(
-            X=validated_data[model_config.features]
-        )
+        predictions = _diabetes_pipe.predict(validated_data)
         results = {
             "predictions": [pred for pred in predictions],
             "version": _version,
