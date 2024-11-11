@@ -9,8 +9,18 @@ def run_training() -> None:
     """Entrena y guarda el modelo."""
 
     # Carga de datos de entrenamiento
-    data = load_dataset(file_name=app_config.train_data_file)
-    
+    features = load_dataset(file_name=app_config.train_data_file)
+    target = load_dataset(file_name="cdc_diabetes_health_indicators_target.csv")
+
+    # Asegúrate de que el target tenga el nombre correcto
+    target.columns = [model_config.target]
+
+    # Combina características y objetivo en un solo DataFrame
+    data = features.join(target)
+
+    # Verifica si la columna objetivo está presente después de la combinación
+    print("Columnas en el DataFrame combinado:", data.columns)
+
     # División de datos en entrenamiento y prueba
     X_train, X_test, y_train, y_test = train_test_split(
         data.drop(columns=model_config.target),
