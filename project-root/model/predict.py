@@ -6,11 +6,8 @@ from model.processing.data_manager import load_pipeline, get_version
 from model.processing.validation import validate_inputs
 
 _version = get_version()
-pipeline_file_name = f"{app_config.pipeline_save_file}_{_version}.pkl"
-_diabetes_pipe = load_pipeline(file_name=pipeline_file_name)
-    
 # Carga del pipeline entrenado usando la versión actual del modelo
-pipeline_file_name = f"{app_config.pipeline_save_file}{_version}.pkl"
+pipeline_file_name = f"{app_config.pipeline_save_file}_{_version}.pkl"
 _diabetes_pipe = load_pipeline(file_name=pipeline_file_name)
 
 def make_prediction(*, input_data: t.Union[pd.DataFrame, dict]) -> dict:

@@ -26,7 +26,8 @@ def save_pipeline(*, pipeline_to_persist) -> None:
 
 def load_pipeline(*, file_name: str):
     """Carga un pipeline entrenado."""
-    return joblib.load(file_name)
+    file_path = f"data/artifacts/{file_name}"
+    return joblib.load(file_path)
 
 # Función para cargar la versión del archivo VERSION
 def get_version() -> str:
