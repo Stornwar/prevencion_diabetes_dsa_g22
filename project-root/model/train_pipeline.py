@@ -28,7 +28,8 @@ def run_training() -> None:
 
     # Balanceo con SMOTE
     min_class_count = min(Counter(y_train).values())
-    sm = SMOTE(k_neighbors=min(min_class_count - 1, 1), random_state=model_config.random_state)
+    # sm = SMOTE(k_neighbors=min(min_class_count - 1, 1), random_state=model_config.random_state)
+    sm = SMOTE()
     X_train_balanced, y_train_balanced = sm.fit_resample(X_train, y_train)
     
     print("Distribución de clases en y_train después de la agrupación:")
