@@ -1,6 +1,6 @@
 fastapi
 pydantic
-pydantic-settings
+pydantic-settings==2.0.0
 uvicorn
 numpy
 pandas
