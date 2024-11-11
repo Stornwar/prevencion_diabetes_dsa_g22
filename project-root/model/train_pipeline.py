@@ -25,6 +25,10 @@ def run_training() -> None:
 
     print("Distribución de clases en y_train antes de SMOTE:")
     print(y_train.value_counts())
+    print(X_train.shape)
+    print(X_test.shape)
+    print(y_train.shape)
+    print(y_test.shape)
 
     # Balanceo con SMOTE
     min_class_count = min(Counter(y_train).values())
