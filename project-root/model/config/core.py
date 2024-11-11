@@ -8,6 +8,7 @@ class AppConfig(BaseSettings):
 
 # Configuración para el modelo
 class ModelConfig(BaseSettings):
+    # Parámetros comunes
     features: list[str] = [
         "HighBP", "HighChol", "CholCheck", "BMI", "Smoker", "Stroke",
         "HeartDiseaseorAttack", "PhysActivity", "Fruits", "Veggies",
@@ -15,10 +16,16 @@ class ModelConfig(BaseSettings):
         "MentHlth", "PhysHlth", "DiffWalk", "Sex", "Education"
     ]
     target: str = "Diabetes_binary"
+    random_state: int = 42
+
+    # Parámetros para RandomForest
     n_estimators: int = 100
     max_depth: int = 10
-    test_size: float = 0.3
-    random_state: int = 42
+
+    # Parámetros para XGBoost
+    xgb_n_estimators: int = 100
+    xgb_max_depth: int = 5
+    xgb_learning_rate: float = 0.1
 
 app_config = AppConfig()
 model_config = ModelConfig()
