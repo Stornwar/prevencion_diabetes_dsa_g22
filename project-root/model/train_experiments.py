@@ -1,7 +1,7 @@
 import mlflow
 import mlflow.sklearn
 from sklearn.metrics import accuracy_score, precision_score, recall_score, roc_auc_score
-from model.processing.data_manager import load_dataset
+from processing.data_manager import load_dataset
 from models import models  # Asegúrate de que models.py esté correctamente configurado
 from sklearn.model_selection import train_test_split
 
