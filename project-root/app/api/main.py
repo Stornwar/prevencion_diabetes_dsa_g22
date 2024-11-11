@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from api.v1.endpoints import health, predict
-from api.config import settings
+from v1.endpoints import health, predict
+from config import settings
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
