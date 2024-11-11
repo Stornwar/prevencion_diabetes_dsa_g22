@@ -2,8 +2,8 @@ import pandas as pd
 from fastapi import APIRouter, HTTPException
 from loguru import logger
 from model.predict import make_prediction
-from app.api.schemas.inputs import MultipleDataInputs
-from app.api.schemas.outputs import PredictionResults
+from app.schemas.inputs import MultipleDataInputs
+from app.schemas.outputs import PredictionResults
 
 router = APIRouter()
 
