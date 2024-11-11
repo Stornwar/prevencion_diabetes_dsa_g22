@@ -1,6 +1,8 @@
 import logging
 from typing import List
-from pydantic import AnyHttpUrl, BaseSettings
+from pydantic_settings import BaseSettings
+from pydantic import AnyHttpUrl
+
 
 class Settings(BaseSettings):
     API_V1_STR: str = "/api/v1"
