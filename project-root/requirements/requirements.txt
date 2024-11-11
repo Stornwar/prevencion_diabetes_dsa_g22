@@ -7,3 +7,4 @@ pandas
 scikit-learn==1.5.2
 loguru
 imbalanced-learn==0.12.4
+xgboost
