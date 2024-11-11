@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard para la Prevención de Diabetes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f2f5;
+            margin: 0;
+            overflow-y: hidden;
+        }
+        .dashboard {
+            display: flex;
+            flex-direction: column;
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            overflow-y: auto; /* Habilitar scroll dentro del contenedor del dashboard */
+            max-height: 90vh; /* Limitar la altura del dashboard */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px; /* Limitar el ancho máximo */
+        }
+        .input-section, .result-section {
+            padding: 20px;
+        }
+        .input-section {
+            width: 400px;
+            border-right: 1px solid #ddd;
+        }
+        .result-section {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centra los elementos horizontalmente */
+            justify-content: center; /* Centra los elementos verticalmente */
+            padding: 20px;
+        }
+        .titulo-azul {
+            color: blue;
+        }
+        .input-group {
+            margin-bottom: 10px;
+        }
+        .input-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .input-group select, .input-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #f7b500;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #d39e00;
+        }
+        .result-section .red {
+            color: red;
+            font-weight: bold;
+        }
+        .result-section .green {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="dashboard">
+    <div class="input-section">
+        <h2 class="titulo-azul">Prevención de la Diabetes</h2>
+        <p>Ingresa tus datos de salud</p>
+
+        <!-- Grupo de inputs -->
+        <div class="input-group">
+            <label for="HighBP">Presión arterial alta</label>
+            <select id="HighBP">
+                <option value="1">Sí</option>
+                <option value="0">No</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="HighChol">Colesterol alto</label>
+            <select id="HighChol">
+                <option value="1">Sí</option>
+                <option value="0">No</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="CholCheck">Chequeo de colesterol (últimos 5 años)</label>
+            <select id="CholCheck">
+                <option value="1">Sí</option>
+                <option value="0">No</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="BMI">Índice de masa corporal (BMI)</label>
+            <input type="number" id="BMI" min="0" max="100" step="0.1">
+        </div>
+
+        <div class="input-group">
+            <label for="Smoker">Fumador</label>
+            <select id="Smoker">
+                <option value="1">Sí</option>
+                <option value="0">No</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="Stroke">Derrame cerebral</label>
+            <select id="Stroke">
+                <option value="1">Sí</option>
+                <option value="0">No</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="HeartDiseaseorAttack">Enfermedad del corazón o ataque al corazón</label>
+            <select id="HeartDiseaseorAttack">
+                <option value="1">Sí</option>
+                <option value="0">No</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="PhysActivity">Actividad física</label>
+            <select id="PhysActivity">
+                <option value="1">Sí</option>
+                <option value="0">No</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="Fruits">Consumo de frutas</label>
+            <select id="Fruits">
+                <option value="1">Sí</option>
+                <option value="0">No</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="Veggies">Consumo de vegetales</label>
+            <select id="Veggies">
+                <option value="1">Sí</option>
+                <option value="0">No</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="HvyAlcoholConsump">Consumo pesado de alcohol</label>
+            <select id="HvyAlcoholConsump">
+                <option value="1">Sí</option>
+                <option value="0">No</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="AnyHealthcare">Acceso a atención médica</label>
+            <select id="AnyHealthcare">
+                <option value="1">Sí</option>
+                <option value="0">No</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="NoDocbcCost">No visitó al doctor por costo</label>
+            <select id="NoDocbcCost">
+                <option value="1">Sí</option>
+                <option value="0">No</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="GenHlth">Salud general (1-5)</label>
+            <input type="number" id="GenHlth" min="1" max="5">
+        </div>
+
+        <div class="input-group">
+            <label for="MentHlth">Días de mala salud mental (último mes)</label>
+            <input type="number" id="MentHlth" min="0" max="30">
+        </div>
+
+        <div class="input-group">
+            <label for="PhysHlth">Días de mala salud física (último mes)</label>
+            <input type="number" id="PhysHlth" min="0" max="30">
+        </div>
+
+        <div class="input-group">
+            <label for="DiffWalk">Dificultad para caminar sin ayuda</label>
+            <select id="DiffWalk">
+                <option value="1">Sí</option>
+                <option value="0">No</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="Sex">Sexo</label>
+            <select id="Sex">
+                <option value="0">Femenino</option>
+                <option value="1">Masculino</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="Age">Categoría de edad (1, 2, 3, o 4)</label>
+            <input type="number" id="Age" min="1" max="4">
+        </div>
+
+        <div class="input-group">
+            <label for="Education">Nivel de educación (1, 2, 3 o 4)</label>
+            <input type="number" id="Education" min="1" max="4">
+        </div>
+
+        <div class="input-group">
+            <label for="Income">Categoría de ingreso (1, 2 o 3)</label>
+            <input type="number" id="Income" min="1" max="3">
+        </div>
+
+        <button onclick="evaluarRiesgo()">Evaluar riesgo</button>
+    </div>
+
+    <div class="result-section">
+        <h3>Resultados</h3>
+        <div id="nivelRiesgo" style="font-size: 18px; padding: 10px;"></div>
+        <p id="mensaje"></p>
+    </div>
+</div>
+
+<script>
+    function evaluarRiesgo() {
+        // Simulación de riesgo para la demostración
+        const riesgo = Math.random() > 0.5 ? 1 : 0;
+
+        const nivelRiesgo = document.getElementById("nivelRiesgo");
+        const mensaje = document.getElementById("mensaje");
+
+        if (riesgo === 1) {
+            nivelRiesgo.innerHTML = "<span class='red'>Alto</span>";
+            mensaje.innerHTML = "<span class='red'>Tu salud es lo primero. Te recomendamos consultar a un profesional médico para un seguimiento adecuado y personalizado.</span>";
+        } else {
+            nivelRiesgo.innerHTML = "<span class='green'>Bajo</span>";
+            mensaje.innerHTML = "<span class='green'>¡Excelente! Tu evaluación es favorable. Sigue cuidando tu salud para mantener estos resultados.</span>";
+        }
+    }
+</script>
+
+</body>
+</html>
