@@ -1,7 +1,6 @@
 import typing as t
 import numpy as np
 import pandas as pd
-from model import __version__ as _version
 from model.config.core import app_config, model_config
 from model.processing.data_manager import load_pipeline
 from model.processing.validation import validate_inputs
