@@ -1,5 +1,3 @@
-from sklearn.pipeline import Pipeline
-from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import FunctionTransformer, StandardScaler
 from sklearn.compose import ColumnTransformer
 from config.core import model_config
@@ -35,13 +33,3 @@ preprocessor = ColumnTransformer(
     ],
     remainder='passthrough'
 )
-
-# Pipeline con preprocesamiento y el modelo
-diabetes_pipe = Pipeline([
-    ('preprocessor', preprocessor),
-    ('classifier', RandomForestClassifier(
-        n_estimators=model_config.n_estimators,
-        max_depth=model_config.max_depth,
-        random_state=model_config.random_state
-    ))
-])

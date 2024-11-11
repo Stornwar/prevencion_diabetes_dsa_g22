@@ -4,7 +4,7 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, roc_a
 from processing.data_manager import load_dataset
 from models import models  # Asegúrate de que models.py esté correctamente configurado
 from sklearn.model_selection import train_test_split
-from pipeline import diabetes_pipe  # Importa el pipeline configurado
+from pipeline import preprocessor  # Importa el preprocesador
 
 def train_and_log_model(model, model_name, X_train, y_train, X_test, y_test):
     """
@@ -41,8 +41,8 @@ def train_and_log_model(model, model_name, X_train, y_train, X_test, y_test):
 data = load_dataset(file_name="cdc_diabetes_health_indicators_features.csv")
 target = load_dataset(file_name="cdc_diabetes_health_indicators_target.csv")
 
-# Aplicar el pipeline para preprocesar los datos
-data_preprocessed = diabetes_pipe.fit_transform(data)
+# Aplicación del preprocesador
+data_preprocessed = preprocessor.fit_transform(data)
 
 # División en conjunto de entrenamiento y prueba
 X_train, X_test, y_train, y_test = train_test_split(
